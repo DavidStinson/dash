@@ -1,12 +1,4 @@
-import * as functions from 'firebase-functions';
-
-
-// http request 1
-exports.randomNumber = functions.https.onRequest((req, res) => {
-  const number = Math.round(Math.random() * 100)
-  console.log(number)
-  res.send(number.toString())
-})
+export { randomNumber, goToGoogle, sayMyName } from './http'
 
 
 // import { WebClient } from "@slack/web-api"
