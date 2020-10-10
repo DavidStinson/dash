@@ -15,10 +15,18 @@ export const goToGoogle = functions.https.onRequest((req, res) => {
 })
 
 export const sayMyName = functions.https.onRequest((req, res) => {
-  let name = req.query.name;
-  if (!name) name = "friend"
-  res.send(`Hello, ${name}`)
+  const name = req.query.name
+  if (!name) {
+    res.status(400).send("HEY! You need to supply a name!")
+  } else {
+    res.send(`hello, ${name}`)
+  }
 })
+
+export const doNotSayMyName = functions.https.onRequest((req, res) => {
+  res.send("hello friend")
+})
+
 
 // export const sayHello = functions.https.onCall((data, context) => {
 //   return `hello, friend.`
