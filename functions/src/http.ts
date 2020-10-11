@@ -1,4 +1,7 @@
 import * as functions from 'firebase-functions';
+import * as express from 'express'
+import * as cors from 'cors'
+import * as apiCtrl from './api'
 
 import * as admin from 'firebase-admin';
 admin.initializeApp();
@@ -27,6 +30,13 @@ export const doNotSayMyName = functions.https.onRequest((req, res) => {
   res.send("hello friend")
 })
 
+const app = express()
+
+app.use(cors({origin: true}))
+
+app.get("/hey", apiCtrl.hello)
+
+export const api = functions.https.onRequest(app)
 
 // export const sayHello = functions.https.onCall((data, context) => {
 //   return `hello, friend.`
