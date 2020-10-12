@@ -1,4 +1,4 @@
-export { randomNumber, goToGoogle, sayMyName, api } from './http';
+export { api } from './http';
 
 // import { WebClient } from "@slack/web-api"
 // import * as crypto from 'crypto';
