@@ -26,9 +26,6 @@ export const sayMyName = functions.https.onRequest((req, res) => {
   }
 })
 
-export const doNotSayMyName = functions.https.onRequest((req, res) => {
-  res.send("hello friend")
-})
 
 const app = express()
 
@@ -36,8 +33,16 @@ app.use(cors({origin: true}))
 
 app.get("/hey", apiCtrl.hello)
 
+app.get("/hey", (req, res) => {
+  res.send("hello, friend")
+})
+
 export const api = functions.https.onRequest(app)
 
 // export const sayHello = functions.https.onCall((data, context) => {
 //   return `hello, friend.`
+// })
+
+// export const doNotSayMyName = functions.https.onRequest((req, res) => {
+//   res.send("hello friend")
 // })
